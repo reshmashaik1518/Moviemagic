@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Select Seats</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #1c1c1c, #4b0000); /* black-maroon gradient */
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 700px;
+        }
+
+        h2 {
+            margin-bottom: 30px;
+            color: #ffcccb;
+        }
+
+        form {
+            text-align: left;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
+        label {
+            display: inline-block;
+            margin: 5px 8px;
+            background-color: #2e2e2e;
+            padding: 10px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 6px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background-color: #800000;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #a52a2a;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>💺 Select Your Seats for {{ movie }} at {{ time }}</h2>
+        <form method="POST" action="/payment">
+            <input type="hidden" name="movie" value="{{ movie }}">
+            <input type="hidden" name="time" value="{{ time }}">
+            <input type="hidden" name="tickets" value="{{ tickets }}">
+
+            {% for row in rows %}
+                {% for seat_num in range(1, 6) %}
+                    <label>
+                        <input type="checkbox" name="seats" value="{{ row }}{{ seat_num }}"> {{ row }}{{ seat_num }}
+                    </label>
+                {% endfor %}
+                <br>
+            {% endfor %}
+
+            <button type="submit">Proceed to Payment</button>
+        </form>
+    </div>
+</body>
+</html>

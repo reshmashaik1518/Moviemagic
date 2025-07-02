@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Select Movie</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #1c1c1c, #4b0000);
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h2 {
+            margin-bottom: 30px;
+            color: #ffcccb;
+        }
+
+        select, input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 8px;
+            background-color: #2e2e2e;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #800000;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #a52a2a;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🍿 Choose Your Movie</h2>
+        <form method="POST" action="/movies">
+            <select name="movie" required>
+                <option value="">-- Select Movie --</option>
+                <option value="RRR">RRR</option>
+                <option value="KGF">KGF</option>
+                <option value="Pushpa">Pushpa</option>
+            </select>
+
+            <select name="time" required>
+                <option value="">-- Select Time --</option>
+                <option value="10:00 AM">10:00 AM</option>
+                <option value="1:00 PM">1:00 PM</option>
+                <option value="4:00 PM">4:00 PM</option>
+                <option value="7:00 PM">7:00 PM</option>
+            </select>
+
+            <input type="number" name="tickets" placeholder="No. of Tickets" min="1" max="10" required>
+
+            <button type="submit">Continue</button>
+        </form>
+    </div>
+</body>
+</html>
